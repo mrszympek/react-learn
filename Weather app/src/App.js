@@ -8,8 +8,9 @@ class App extends Component {
         super(props);
 
         this.state = {
+            loading: true,
             weather: [],
-            city: ''
+            city: 'test'
         }
     }
 
@@ -21,22 +22,23 @@ class App extends Component {
             .then(response => {
                 const weather = response.list;
                 const city = response.city.name;
-                this.setState({weather, city});
-
-                console.log(weather)
+                this.setState({weather, city, loading: false});
             })
     }
 
-    calculateTemp(temp) {
-        return Math.round(((temp - 273.15) * 100) / 100).toFixed(1) + "°C"
-    }
-
     render() {
-        return (
-            <div>
-                <CurrentWeather weather={this.state.weather[0]} city={this.state.city} calculateTemp={this.calculateTemp}/>
-            </div>
-        );
+        console.log(this.state.loading);
+        if (!this.state.loading) {
+            return (
+                <div>
+                    <CurrentWeather weather={this.state.weather[0]} city={this.state.city}/>
+                </div>
+            );
+        } else {
+            return (
+                <p>Loading...</p>
+            )
+        }
     }
 }
 
