@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import CurrentWeather from './Components/current_weather';
+import WeatherList from './Components/weather_list';
 
 class App extends Component {
     constructor(props) {
@@ -27,11 +28,11 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state.loading);
         if (!this.state.loading) {
             return (
                 <div>
                     <CurrentWeather weather={this.state.weather[0]} city={this.state.city}/>
+                    <WeatherList weather={this.state.weather}/>
                 </div>
             );
         } else {
