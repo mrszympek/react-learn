@@ -27,3 +27,5 @@ class CurrentWeather extends Component{
 }
 
 export default CurrentWeather;
+
+// STATE SIE NIE UPDATUJE
