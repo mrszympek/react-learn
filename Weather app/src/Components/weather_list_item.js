@@ -11,7 +11,7 @@ class WeatherItemList extends Component {
 
     render() {
         return (
-            <p>dupcia</p>
+            <p>dupcia pupcia</p>
         )
     }
 

@@ -1,19 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
 import WeatherListItem from './weather_list_item';
 
 const WeatherList = (props) => {
     console.log();
-    let listItem = props.weather.map((item) => {
-        return (
-            <WeatherListItem
-                temp={item.main.temp}
-            />
-        )
-    });
+    let listItem = props.weather
+        .filter((item) => {
+            return (new Date(item.dt*1000).getUTCHours() === 12);
+        })
+        .map((item) => {
+            return (
+                <WeatherListItem
+                    temp={item.main.temp}
+                />
+            )
+        });
 
-    return  (
+    return <div>
         {listItem}
-    )
+    </div>
 };
 
 export default WeatherList;
