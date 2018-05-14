@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {calculateTemp} from "../helpers";
+import {calculateTemp, setIcon} from "../helpers";
 
 class CurrentWeather extends Component{
     constructor(props) {
@@ -13,13 +13,14 @@ class CurrentWeather extends Component{
     }
 
     render() {
-        let iconUrl = `http://openweathermap.org/img/w/${this.state.icon}.png`;
+        let iconUrl = setIcon(this.state.icon);
+        let temp = calculateTemp(this.state.temp);
 
         return (
             <div>
                 <h3>{this.state.city}</h3>
                 <img src={iconUrl} alt=""/>
-                <p>{calculateTemp(this.state.temp)}</p>
+                <p>{temp}</p>
             </div>
         )
     }

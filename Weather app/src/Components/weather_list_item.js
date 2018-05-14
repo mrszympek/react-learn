@@ -1,20 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {calculateTemp, getDayName, setIcon} from "../helpers";
 
-class WeatherItemList extends Component {
-    constructor(props) {
-        super(props);
+const WeatherItemList = (props) => {
+    const iconUrl = setIcon(props.icon);
 
-        this.state = {
+    let currentDay = getDayName(props.day);
+    let temp = calculateTemp(props.temp);
 
-        }
-    }
-
-    render() {
-        return (
-            <p>dupcia pupcia</p>
-        )
-    }
-
-}
+    return (
+        <div>
+            <h5>{currentDay}</h5>
+            <img src={iconUrl} alt=""/>
+            <p>{temp}</p>
+        </div>
+    )
+    
+};
 
 export default WeatherItemList;
