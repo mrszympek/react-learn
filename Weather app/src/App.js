@@ -12,12 +12,28 @@ class App extends Component {
             loading: true,
             weather: [],
             city: 'test'
-        }
+        };
+
+        this.setCurrentPosition = this.setCurrentPosition.bind(this);
     }
 
     componentDidMount() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.setCurrentPosition);
+        } else {
+            alert("geolocation is not supported");
+        }
+    }
+
+    setCurrentPosition(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
         const apiKey = 'f74df980fa4dfddbdd9152467484cea7';
-        const url = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${apiKey}`;
+
+
+        let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${apiKey}`;
+        console.log(url);
+
         fetch(url)
             .then(response => response.json())
             .then(response => {
