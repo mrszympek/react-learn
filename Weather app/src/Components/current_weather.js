@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 import {calculateTemp, setIcon} from "../helpers";
 
-class CurrentWeather extends Component{
+class CurrentWeather extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            city: this.props.city,
-            temp: this.props.weather.main.temp,
-            icon: this.props.weather.weather[0].icon,
+            city: '',
+            temp: '',
+            icon: ''
         }
     }
 
+    componentWillReceiveProps(props) {
+        this.setState({city: props.city, temp: props.weather.main.temp, icon: props.weather.weather[0].icon});
+    }
+
     render() {
+        console.log('current', this.state.city);
         let iconUrl = setIcon(this.state.icon);
         let temp = calculateTemp(this.state.temp);
 
@@ -27,5 +32,3 @@ class CurrentWeather extends Component{
 }
 
 export default CurrentWeather;
-
-// STATE SIE NIE UPDATUJE
