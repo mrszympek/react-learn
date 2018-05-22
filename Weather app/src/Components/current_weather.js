@@ -21,7 +21,6 @@ class CurrentWeather extends Component {
     }
 
     render() {
-        console.log('current', this.state.city);
         let iconUrl = setIcon(this.state.icon);
         let temp = calculateTemp(this.state.temp);
 
@@ -29,7 +28,7 @@ class CurrentWeather extends Component {
             <div style={currentWeather}>
                 <h3>{this.state.city}</h3>
                 <img src={iconUrl} alt=""/>
-                <p>{temp}</p>
+                <p>{temp} °C</p>
             </div>
         )
     }

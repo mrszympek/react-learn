@@ -14,7 +14,8 @@ const WeatherList = (props) => {
         .map((item) => {
             return (
                 <WeatherListItem
-                    temp={item.main.temp}
+                    minTemp={item.main.temp_min}
+                    maxTemp={item.main.temp_max}
                     icon={item.weather[0].icon}
                     day={item.dt_txt}
                     key={item.dt}

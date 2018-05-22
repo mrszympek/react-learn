@@ -62,7 +62,6 @@ class App extends Component {
                 const weather = response.list;
                 const city = response.city.name;
                 this.setState({weather, city, loading: false});
-                console.log(weather);
             })
     }
 
