@@ -1,6 +1,10 @@
 import React from 'react'
 import {calculateTemp, getDayName, setIcon} from "../helpers";
 
+const weatherItem = {
+  padding: '0 16px'
+};
+
 const WeatherItemList = (props) => {
     const iconUrl = setIcon(props.icon);
 
@@ -8,7 +12,7 @@ const WeatherItemList = (props) => {
     let temp = calculateTemp(props.temp);
 
     return (
-        <div>
+        <div style={weatherItem}>
             <h5>{currentDay}</h5>
             <img src={iconUrl} alt=""/>
             <p>{temp}</p>

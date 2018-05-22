@@ -5,6 +5,14 @@ import SearchBar from './Components/search_bar';
 import CurrentWeather from './Components/current_weather';
 import WeatherList from './Components/weather_list';
 
+const weatherWrap = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    flexDirection: 'column'
+};
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +62,7 @@ class App extends Component {
                 const weather = response.list;
                 const city = response.city.name;
                 this.setState({weather, city, loading: false});
+                console.log(weather);
             })
     }
 
@@ -62,7 +71,7 @@ class App extends Component {
         console.log(this.state.city);
         if (!this.state.loading) {
             return (
-                <div>
+                <div style={weatherWrap}>
                     <SearchBar setCurrentWeather={this.setCurrentWeather}/>
                     <CurrentWeather weather={this.state.weather[0]} city={this.state.city}/>
                     <WeatherList weather={this.state.weather}/>

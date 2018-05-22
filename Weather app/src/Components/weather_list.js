@@ -1,6 +1,11 @@
 import React from 'react';
 import WeatherListItem from './weather_list_item';
 
+const weatherList = {
+    display: 'flex',
+    flexDirection: 'row'
+};
+
 const WeatherList = (props) => {
     let listItem = props.weather
         .filter((item) => {
@@ -17,9 +22,11 @@ const WeatherList = (props) => {
             )
         });
 
-    return <div>
-        {listItem}
-    </div>
+    return (
+        <div style={weatherList}>
+            {listItem}
+        </div>
+    )
 };
 
 export default WeatherList;

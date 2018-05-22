@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {calculateTemp, setIcon} from "../helpers";
 
+const currentWeather = {
+    textAlign: 'center'
+};
+
 class CurrentWeather extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +26,7 @@ class CurrentWeather extends Component {
         let temp = calculateTemp(this.state.temp);
 
         return (
-            <div>
+            <div style={currentWeather}>
                 <h3>{this.state.city}</h3>
                 <img src={iconUrl} alt=""/>
                 <p>{temp}</p>
