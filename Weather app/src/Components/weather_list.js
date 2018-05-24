@@ -1,6 +1,11 @@
 import React from 'react';
 import WeatherListItem from './weather_list_item';
 
+const weatherList = {
+    display: 'flex',
+    flexDirection: 'row'
+};
+
 const WeatherList = (props) => {
     let listItem = props.weather
         .filter((item) => {
@@ -9,7 +14,8 @@ const WeatherList = (props) => {
         .map((item) => {
             return (
                 <WeatherListItem
-                    temp={item.main.temp}
+                    minTemp={item.main.temp_min}
+                    maxTemp={item.main.temp_max}
                     icon={item.weather[0].icon}
                     day={item.dt_txt}
                     key={item.dt}
@@ -17,9 +23,11 @@ const WeatherList = (props) => {
             )
         });
 
-    return <div>
-        {listItem}
-    </div>
+    return (
+        <div style={weatherList}>
+            {listItem}
+        </div>
+    )
 };
 
 export default WeatherList;
